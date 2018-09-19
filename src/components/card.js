@@ -22,14 +22,22 @@ class Card extends Component {
             adjectiveFour: '',
             nounThree: '',
             celebFour: '',
-            adjectiveFive: ''
+            adjectiveFive: '',
+            contentVisible: false
         }
         this.handleInputChange = this.handleInputChange.bind(this);
+        this.handleFormSubmit = this.handleFormSubmit.bind(this);
+
     }
 
     handleInputChange(event) {
         this.setState({ [event.target.name]: event.target.value })
         //console.log(this.state.color);
+    }
+
+    handleFormSubmit(event) {
+        event.preventDefault()
+        this.setState({ contentVisible: !this.state.contentVisible })
     }
 
 
@@ -59,21 +67,26 @@ class Card extends Component {
         ]
 
         return (
-            <div className="card">
-                {
-                    inputData.map(data => Input((data), this.handleInputChange))
-                }
-                <Content data={this.state} />
+            <form onSubmit={this.handleFormSubmit} className="card">
+                <div className="card">
+                    <div className="card__inputs">
+                        {
+                            inputData.map(data => Input((data), this.handleInputChange))
+                        }
+                    </div>
+                    <button type="submit">{!this.state.contentVisible ? 'Generate Mad lib' : 'Clear Form'}</button>
+                    {
+                        this.state.contentVisible ? <Content data={this.state} /> : ''
+                    }
 
-
-                {/* {Input('Color', this.state.color, this.handleInputChange, 'color')}
+                    {/* {Input('Color', this.state.color, this.handleInputChange, 'color')}
                 {Input('Plural Noun', this.state.pluralNoun, this.handleInputChange, 'pluralNoun')}
                 {Input('Adjective', this.state.adjectiveOne, this.handleInputChange, 'adjectiveOne')}
                 {Input('Celebrity', this.state.celebOne, this.handleInputChange, 'celebOne')} */}
+                </div>
 
 
-
-            </div>
+            </form>
         )
     }
 }
