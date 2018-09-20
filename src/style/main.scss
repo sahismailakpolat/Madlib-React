@@ -9,6 +9,13 @@
         text-align: center;
     
 }
+.gray{
+    background: #B3B3B3;
+}
+.green{
+    background: #00CB79;
+}
+
 html {
     font-size: 62.5%; // 1rem is 10px
 }
@@ -175,7 +182,6 @@ input {
 }
 &__number {
     grid-column: number-s/number-e;
-    background-color: #00CB79;
     font-size: 20px;
     color: white;
     padding-top: 1px;
