@@ -1,5 +1,4 @@
-# React with Bootstrap Starter Project
+# React with Bootstrap Project
 
 
 
-*Fork from [es6-webpack2-starter](https://github.com/micooz/es6-webpack2-starter)*
